@@ -101,3 +101,36 @@ i.	For optimization purposes, load balancing and scaling on the server is impera
 ii.	Test with different load levels: To simulate real world scenario where an unknown number of users can consume the server’s API or hit the endpoint, load testing should be performed with varying load levels to determine the point at which the system starts experiencing performance degradation. This helps identify the system's scalability and capacity limits.
 iii.	Network optimization: To reduce the network latency, the client’s system and network bandwidth should be optimized. This is to ensure that network connections are reliable and properly configured. Therefore, optimizing network protocols and infrastructure will help to reduce network overhead and latency.
 In conclusion, the load performance test indicates that the system performs well under a load of 1000 users. The endpoint’s response time and throughput meet the expected performance requirements (based on the test environment configuration/setup), ensuring a satisfactory user experience. The minimal error rate reflects the system's stability and reliability. However, the recommended optimizations and configuration changes should be implemented to optimize the server in order to reduce latency, improve response times, and further enhance the overall performance of the server/endpoint.
+
+TO PERFORM THE TEST:
+Set up the Test Environment: 
+For the AUT to give us reliable indicators, it is imperative that we ensure that our test environment reflects the production environment. 
+To do this successfully, we need to ensure that the required servers, databases, and other components of the AUT are working and functioning as expected. 
+The sample API endpoint used is taken from an open app on https://reqres.in and we will test the PATCH endpoint.
+
+1. Ensure JDK/JRE is installed on your device
+2. Download and install Apache JMeter.
+3. Setup the System Environment (so as to be able to execute the performance test in a non-GUI mode)
+4. Launch JMeter
+5. Create a Test Plan: Create a new Test Plan and add a Thread Group. Set the number of threads and the ramp-up time, which is the time it takes for all threads to start
+6. Add an HTTP Request Sampler: Add a HTTP Request Sampler to the Thread Group and configure it with the required API endpoint/URL. 
+7. Add a Response Assertion: Add a Response Assertion to the HTTP Request Sampler to verify that the login was successful. This is done by checking the response code and any relevant content.
+8. Add Listeners: Add Listeners to the Thread Group to collect and display the results of the test. Some common Listeners include the Summary Report, Aggregate Report, and Graph Results. You can also add the .csv file location to store the reports.
+9. Run the Test: Run the test and analyze the results. JMeter will provide data on response time, throughput, errors, and other metrics and analyze the result.
+It's a good practice to run performance test on a non-GUI mode. For Windows OS, in CLI/CMD/Command Prompt, you will use the code:
+jmeter -n -t [path_to_test_file.jmx] -l [path_to_results_file.csv] -e -o [Path to html output folder]
+
+Where:
+jmeter: Is the command to invoke JMeter in CLI mode.
+-n: Ensures JMeter runs in non-GUI mode.
+-t <test_script.jmx>: It specifies the path to the JMeter test script (.jmx file) that you want to execute.
+-l <results.csv>: This specifies the path to the file where JMeter will store the test results in csv format.
+-e: This option tells JMeter to generate the HTML dashboard report at the end of the test execution.
+-o <report_directory>: This specifies the output directory where the HTML dashboard report will be generated.
+
+The full illustration of the performance test and the step-by-steps test summary report and analysis, including the Environment setup, etc are available on my Linkedin link attached below.
+https://tinyurl.com/linkedinvebong
+
+GitHub Repo Link: https://tinyurl.com/vebong 
+
+Never Stop learning…
